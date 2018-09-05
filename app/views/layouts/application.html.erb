@@ -20,6 +20,7 @@
             <li class="nav-item">Signed in as: <strong><%= current_user.email %></strong></li>
             <li class="nav item"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %></li>
             <li class="nav item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link' %></li>
+            <li class="nav item"><%= link_to "Wikis", wikis_path, :class => 'nav-link' %></li>
           <% else %>
           <li class="nav item"><%= link_to "Blocipedia", root_path, :class => 'nav-link' %></li>
           <li class="nav item"><%= link_to "Sign In", new_user_session_path, :class => 'nav-link' %></li>
