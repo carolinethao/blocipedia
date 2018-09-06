@@ -1,20 +1,23 @@
 class WikisController < ApplicationController
+
   def index
-    @wikis = Wiki.all
+    @wikis = authorize Wiki.all
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
   end
 
   def new
-    @wiki = Wiki.new
+    @wiki = authorize Wiki.new
   end
 
   def create
-    @wiki = Wiki.new
+    @wiki = authorize Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.user = current_user
+
 
     if @wiki.save
       flash[:notice] = "Wiki was saved!"
@@ -26,11 +29,11 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
 
@@ -44,7 +47,7 @@ class WikisController < ApplicationController
   end
 
   def destroy
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."

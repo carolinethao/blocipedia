@@ -22,14 +22,23 @@
             <li class="nav item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link' %></li>
             <li class="nav item"><%= link_to "Wikis", wikis_path, :class => 'nav-link' %></li>
           <% else %>
-          <li class="nav item"><%= link_to "Blocipedia", root_path, :class => 'nav-link' %></li>
           <li class="nav item"><%= link_to "Sign In", new_user_session_path, :class => 'nav-link' %></li>
+          <li class="nav item"><%= link_to "Wikis", wikis_path, :class => 'nav-link' %></li>
           <% end %>
-        </li>
       </ul>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
