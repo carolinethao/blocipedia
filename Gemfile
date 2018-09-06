@@ -67,3 +67,5 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.7'
 
 gem 'pundit'
+
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
