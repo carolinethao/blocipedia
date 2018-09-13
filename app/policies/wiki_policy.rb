@@ -16,6 +16,10 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && user == record.user || user.admin?
+    user == record.user || user.admin? if user
+  end
+
+  def private?
+    user == record.user || user.admin? if user
   end
 end

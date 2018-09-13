@@ -17,7 +17,7 @@
       <% if current_user.role == 'standard' %>
         <a href="#" class="btn btn-lg btn-block btn-primary disabled">Current Plan</a>
       <% else %>
-        <%= link_to "Downgrade Plan", user_premium_to_standard_path(current_user), data: { confirm: 'Are you sure you want to downgrade?' }, method: :post, :class => 'btn btn-lg btn-block btn-primary' %>
+        <%= link_to "Downgrade Plan", user_premium_to_standard_path(current_user), data: { confirm: 'Your private Wikis will become public. Are you sure you want to downgrade?' }, method: :post, :class => 'btn btn-lg btn-block btn-primary' %>
       <% end %>
     </div>
   </div>

@@ -16,6 +16,7 @@ class WikisController < ApplicationController
     @wiki = authorize Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
     @wiki.user = current_user
 
 
@@ -36,6 +37,7 @@ class WikisController < ApplicationController
     @wiki = authorize Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
