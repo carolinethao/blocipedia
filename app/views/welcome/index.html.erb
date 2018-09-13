@@ -3,7 +3,11 @@
     <h1>Blocipedia: Social, Markdown Wikis</h1>
     <p>Create and share Markdown Wikis</p>
     <p>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-primary' %>
+      <% if user_signed_in? %>
+        <%= link_to "Create New Wiki", new_wiki_path, :class => 'btn btn-primary' %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-primary' %>
+      <% end %>
     </p>
   </center>
 </div>

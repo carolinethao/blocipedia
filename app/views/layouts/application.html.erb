@@ -14,32 +14,36 @@
   </head>
 
   <body>
-    <div class="container">
-      <ul class="nav">
-          <% if user_signed_in? %>
-            <li class="nav-item">Signed in as: <strong><%= current_user.email %></strong></li>
-            <li class="nav item"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %></li>
-            <li class="nav item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-link' %></li>
-            <li class="nav item"><%= link_to "Wikis", wikis_path, :class => 'nav-link' %></li>
-          <% else %>
-          <li class="nav item"><%= link_to "Sign In", new_user_session_path, :class => 'nav-link' %></li>
-          <li class="nav item"><%= link_to "Wikis", wikis_path, :class => 'nav-link' %></li>
-          <% end %>
-      </ul>
+  <div class='d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm'>
+    <h5 class='my-0 mr-md-auto font-weight-normal'><%= link_to 'Blocipedia', root_path, :class => 'my-0 mr-md-auto font-weight-normal' %></h5>
+    <nav class='my-2 my-md-0 mr-md-3'>
+      <% if user_signed_in? %>
+        <strong><%= current_user.email %></strong>
+        <%= link_to 'Wikis', wikis_path, :class => 'p-2 text-dark' %>
+        <%= link_to 'Profile', edit_user_registration_path, :class => 'p-2 text-dark' %>
+      </nav>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'btn btn-outline-primary' %>
+    <% else %>
+      <%= link_to 'Wikis', wikis_path, :class => 'p-2 text-dark' %>
+    </nav>
+    <%= link_to 'Sign In', new_user_session_path, :class => 'btn btn-outline-primary' %>
+  <% end %>
 
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-
-      <%= yield %>
+  </div>
+  <div class="container">
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
     </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
   </body>
 </html>

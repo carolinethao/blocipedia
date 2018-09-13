@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   gem 'shoulda'
+  gem 'pry'
 end
 
 group :development do
@@ -69,3 +70,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'pundit'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+gem 'stripe'
+
+gem 'figaro', '1.0'
