@@ -3,4 +3,4 @@
 
   <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } if policy(@wiki).destroy? %>
 
-<p><%= @wiki.body if @wiki.private? == false || policy(@wiki).private? %></p>
+<p><%= markdown(@wiki.body) if @wiki.private? == false || policy(@wiki).private? %></p>

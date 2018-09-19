@@ -9,7 +9,7 @@
             <%= link_to wiki.title, wiki_path(wiki.id) if wiki.private? == false || policy(wiki).private? %>
           </h4>
           <small>
-            <%= wiki.body if wiki.private? == false || policy(wiki).private? %>
+            <%= markdown(wiki.body) if wiki.private? == false || policy(wiki).private? %>
           </small>
         </div>
       </div>

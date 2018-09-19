@@ -13,9 +13,29 @@
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-bottom: 0px">
         <%= f.label :body %>
         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+      </div>
+      <div class="row" style="margin-bottom: 16px">
+        <div class="col-auto">
+          <small><strong><a href ="https://guides.github.com/features/mastering-markdown">Use Markdown</a></strong></small>
+        </div>
+        <div class="col-auto">
+          <small>**bold**</small>
+        </div>
+        <div class="col-auto">
+          <small>_italic_</small>
+        </div>
+        <div class="col-auto">
+          <small>`code`</small>
+        </div>
+        <div class="col-auto">
+          <small>>quote</small>
+        </div>
+        <div class="col-auto">
+          <small>* or - bullet list</small>
+        </div>
       </div>
       <% if current_user.admin? || current_user.premium? %>
         <div class="form-group">
