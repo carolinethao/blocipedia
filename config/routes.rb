@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   get 'users/premium_to_standard'
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborators
+  end
   resources :charges, only: [:new, :create]
   resources :users, only: [] do
-     post 'premium_to_standard' => 'users#premium_to_standard', as: :premium_to_standard
-end
+    post 'premium_to_standard' => 'users#premium_to_standard', as: :premium_to_standard
+  end
+  
   root 'welcome#index'
 
   devise_for :users

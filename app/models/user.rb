@@ -7,6 +7,7 @@ class User < ApplicationRecord
   after_update :downgrade_wikis, if: :standard?
 
   has_many :wikis, dependent: :destroy
+  has_many :collaborators
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
